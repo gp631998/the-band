@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Band</title>
     <link rel="stylesheet" href="./assest/css/style.css">
+    <link rel="stylesheet" href="./assest/css/responsive.css">
     <link rel="stylesheet" href="./assest/fonts/themify-icons/themify-icons.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         More
                         <i class="nav-arrow-down ti-angle-down"></i>
                     </a>
@@ -28,9 +29,14 @@
                     </ul>
                 </li>
             </ul>
+            <!-- Begin: Search Button-->
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
             </div>
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
+            </div>
+            <!-- End: Search Button-->
         </div>
 
         <div id="slider">
@@ -185,6 +191,30 @@
             </footer>
         </div>
     </div>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight;
+        //Đóng/Mở mobile menu
+        mobileMenu.onclick = function(){
+            var isClose = header.clientHeight === headerHeight;
+            if(isClose){
+                header.style.height = 'auto';
+            } else{
+                header.style.height = null;
+            }
+        }
+        //Tự động đóng khi chọn menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
+        for (var i = 0; i < menuItems.length; i++){
+            var menuItem = menuItems[i];
+            menuItem.onclick = function(){
+                header.style.height = null;
+
+            }
+        }
+    </script>
 
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket')
